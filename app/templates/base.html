@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if title %}
+    <title>{{ title }} - PREZOLA</title>
+    {% else %}
+    <title>Welcome to Prezola</title>
+    {% endif %}    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body class="has-navbar-fixed-top">
+    {% block content %} {% endblock %}
+
+<footer class="footer">
+  <div class="content has-text-centered columns is-multiline">
+        <div class="column is-one-third">
+            <h3 class="subtitle">
+                CONTACT
+            </h3>
+            <button class="button is-link">EMAIL US
+            </button>
+        </div>
+        <div class="column is-one-third">
+            <h3 class="subtitle">
+                FOLLOW
+            </h3>
+            <div>
+                <a href="#">
+                    <span class="icon has-text-primary px-5">
+                        <i class="fab fa-pinterest-p fa-lg"></i>
+                    </span>
+                </a>
+                <a href="#">
+                    <span class="icon has-text-primary px-5">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </span>
+                </a>
+                <a href="#">
+                    <span class="icon has-text-primary px-5">
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </span>
+                </a>
+                <a href="#">
+                    <span class="icon has-text-primary px-5">
+                        <i class="fab fa-facebook-f fa-lg"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="column is-one-third">
+            <h3 class="subtitle">
+                BROCHURE
+            </h3>
+            <button class="button is-danger">SEND ME ONE
+            </button>
+        </div>
+  </div>
+</footer>
+</body>
+
+</html>
