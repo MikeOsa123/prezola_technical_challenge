@@ -2,25 +2,48 @@
 
 {% block content  %}
 <body class="has-navbar-fixed-top">
-{% include 'first_nav.html' %}
-
-<!-- Header -->
-<section class="hero is-large is-dark is-bold has-text-centered">
+{% include 'guest_nav.html' %}
+<section class="hero is-medium is-dark is-bold has-text-centered">
   <div class="hero-body">
     <div class="columns">
         <div class="container column is-full">
-        <img class="py-3" src="https://www.investinbath.co.uk/sites/default/files/pictures/Prezola.png" width="325px" />
+        <h1 class="title">
+            YOU SEARCHED FOR
+        </h1>
+        <br>
+        <h2 class="title">
+           Gift List Number {{ list_id }}
+        </h2>
+        <br>
+        <h2 class="subtitle">
+           1 match found
+        </h2>
+        </div>
+    </div>
+    <div class="columns is-centered pb-4">
+        <div class="buttons column is-half">
+            <span class="button is-success">SEARCH AGAIN</span>
+        </div>
+    </div>
+  </div>
+</section>
+<section class="hero is-medium is-white is-bold has-text-centered">
+  <div class="hero-body">
+    <div class="columns">
+        <div class="container column is-full">
+        <h1 class="title">
+            {{ user.firstname }} x {{ user.partner }}
+        </h1>
+        <br>
+        <h2 class="title">
+           {{ user.wedding_date }}
+        </h2>
         <br>
         </div>
     </div>
     <div class="columns is-centered pb-4">
         <div class="buttons column is-half">
-            <a href"{{ url_for('register') }}">
-                <span class="button is-success">CREATE A LIST</span>
-            </a>
-            <a href="{{ url_for('find_list') }}">
-                <span class="button is-danger">PURCHASE A GIFT</span>
-            </a>
+            <span class="button is-success">View Couple's List</span>
         </div>
     </div>
   </div>
@@ -49,7 +72,5 @@
       </div>
     </div>
   </section>
-<!-- Header -->
-    
 </body>
 {% endblock  %}

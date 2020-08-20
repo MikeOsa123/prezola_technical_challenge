@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content  %}
+<body class="has-navbar-fixed-top">
+{% include 'guest_nav.html' %}
+<section class="hero is-medium">
+  <div class="hero-body" style = "background: url('https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat right; background-size: cover;">
+  </div>
+</section>
+<section class="hero is-light">
+  <div class="hero-body level">
+    <div class="level-left">
+        <div class="level-item">
+            <figure class="media-left">
+                <p class="image is-64x64">
+                <img class="is-rounded" src="https://pngimg.com/uploads/wedding/wedding_PNG19476.png">
+                </p>
+            </figure>
+        </div>
+        <div class="level-item">
+            <h1 class="title">
+                {{ user.firstname }} x {{ user.partner }}
+            </h1>
+        </div>
+    </div>
+    <div class="level-right">
+        <div class="level-item">
+            <h2 class="subtitle">
+                {{ user.wedding_date }}
+            </h2>
+        </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div id="app" class="row columns is-multiline">
+            <div class="column is-4">
+                <div class="card large">
+                    <div class="card-image is-16by9">
+                        <figure class="image">
+                            <img src="https://source.unsplash.com/h-ACUrBngrw/1280x720" alt="Image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content has-text-centered">
+                            <h3 class="subtitle">
+                                Brand Title
+                            </h3>
+                            <h3 class="subtitle">
+                                Product Title
+                            </h3>
+                            <h3 class="subtitle">
+                                Price £
+                            </h3>
+                            <h4 class="subtitle">
+                                Quantity
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="card large">
+                    <div class="card-image is-16by9">
+                        <figure class="image">
+                            <img src="https://source.unsplash.com/h-ACUrBngrw/1280x720" alt="Image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                            <a href="#">#css</a> <a href="#">#responsive</a>
+                            <br>
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="card large">
+                    <div class="card-image is-16by9">
+                        <figure class="image">
+                            <img src="https://source.unsplash.com/h-ACUrBngrw/1280x720" alt="Image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                            <a href="#">#css</a> <a href="#">#responsive</a>
+                            <br>
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+</body>
+{% endblock  %}
