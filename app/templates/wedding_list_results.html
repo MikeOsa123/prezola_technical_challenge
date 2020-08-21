@@ -1,76 +1,77 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
-{% block content  %}
 <body class="has-navbar-fixed-top">
-{% include 'guest_nav.html' %}
-<section class="hero is-medium is-dark is-bold has-text-centered">
-  <div class="hero-body">
-    <div class="columns">
-        <div class="container column is-full">
-        <h1 class="title">
-            YOU SEARCHED FOR
-        </h1>
-        <br>
-        <h2 class="title">
-           Gift List Number {{ list_id }}
-        </h2>
-        <br>
-        <h2 class="subtitle">
-           1 match found
-        </h2>
+    {% include 'guest_nav.html' %}
+    <section class="hero is-medium is-dark is-bold has-text-centered">
+        <div class="hero-body">
+            <div class="columns">
+                <div class="container column is-full">
+                    <h1 class="title">
+                        YOU SEARCHED FOR
+                    </h1>
+                    <br>
+                    <h2 class="title">
+                        Gift List Number {{ wedding_list_id }}
+                    </h2>
+                    <br>
+                    <h2 class="subtitle">
+                        1 match found
+                    </h2>
+                </div>
+            </div>
+            <div class="columns is-centered pb-4">
+                <div class="buttons column is-half">
+                    <span class="button is-success">SEARCH AGAIN</span>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="columns is-centered pb-4">
-        <div class="buttons column is-half">
-            <span class="button is-success">SEARCH AGAIN</span>
+    </section>
+    <section class="hero is-medium is-white is-bold has-text-centered">
+        <div class="hero-body">
+            <div class="columns">
+                <div class="container column is-full">
+                    <h1 class="title">
+                        {{ user.firstname }} x {{ wedding.partner }}
+                    </h1>
+                    <br>
+                    <h2 class="title">
+                        {{ wedding.wedding_date }}
+                    </h2>
+                    <br>
+                </div>
+            </div>
+            <div class="columns is-centered pb-4">
+                <form action="{{ url_for('purchase_list') }}" method="POST">
+                    <div class="buttons column is-half">
+                        <button type="submit" class="button is-success">View Couple's List</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-  </div>
-</section>
-<section class="hero is-medium is-white is-bold has-text-centered">
-  <div class="hero-body">
-    <div class="columns">
-        <div class="container column is-full">
-        <h1 class="title">
-            {{ user.firstname }} x {{ user.partner }}
-        </h1>
-        <br>
-        <h2 class="title">
-           {{ user.wedding_date }}
-        </h2>
-        <br>
+    </section>
+    <section class="section">
+        <div class="container has-text-centered">
+            <h2 class="subtitle">
+                UNRIVALLED CHOICE OF GIFTS, FULL FLEXIBILITY AND EXCEPTIONAL SERVICE
+            </h2>
+            <div class="columns has-text-centered">
+                <div class="column">
+                    <a class="box social" href="#">
+                        <p class="title is-4">Personal Services</p>
+                    </a>
+                </div>
+                <div class="column">
+                    <a class="box social" href="#">
+                        <p class="title is-4">Free Storage and Delivery</p>
+                    </a>
+                </div>
+                <div class="column">
+                    <a class="box social" href="#">
+                        <p class="title is-4">Unlimited Selection of Gifts</p>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="columns is-centered pb-4">
-        <div class="buttons column is-half">
-            <span class="button is-success">View Couple's List</span>
-        </div>
-    </div>
-  </div>
-</section>
-<section class="section">
-    <div class="container has-text-centered">
-        <h2 class="subtitle">
-            UNRIVALLED CHOICE OF GIFTS, FULL FLEXIBILITY AND EXCEPTIONAL SERVICE
-        </h2>
-      <div class="columns has-text-centered">
-        <div class="column">
-            <a class="box social" href="#">
-                <p class="title is-4">Personal Services</p>
-            </a>
-        </div>
-        <div class="column">
-            <a class="box social" href="#">
-                <p class="title is-4">Free Storage and Delivery</p>
-            </a>
-        </div>
-        <div class="column">
-            <a class="box social" href="#">
-                <p class="title is-4">Unlimited Selection of Gifts</p>
-            </a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </body>
-{% endblock  %}
+{% endblock %}

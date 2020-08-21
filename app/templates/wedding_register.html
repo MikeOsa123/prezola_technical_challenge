@@ -18,9 +18,9 @@
     </div>
     <form action="" method="POST">
         {{ form.hidden_tag() }}
-        {{ form.partner() }}
-        {{ form.wedding_date() }}
-        {{ form.submit() }}
+        {{ form.partner(class='input is-medium is-rounded', placeholder="PARTNER'S NAME") }}
+        {{ form.wedding_date(class='input is-medium is-rounded') }}
+        {{ form.submit(class="button is-primary") }}
     </form>
   </div>
 </section>

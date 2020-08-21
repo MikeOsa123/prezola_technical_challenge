@@ -7,10 +7,13 @@ from app.forms import LoginForm, RegisterForm, WeddingForm
 from app.models import User, List, Product, Wedding, Listitem
 from app.helper import MergeDicts
 
-# Landing page route
-@app.route('/')
-@app.route('/index')
-@app.route('/home')
-def index():
-    user = {'username': 'Michael'}
-    return render_template('index.html', title='Home', user=user)
+'''
+All routes relating to product
+'''
+
+@app.route('/products')
+@login_required
+def products():
+    wedding = Wedding.query.filter_by(user_id=current_user.id).first()
+    products = Product.query.all()
+    return render_template('products.html', title='Products', products=products, wedding=wedding)

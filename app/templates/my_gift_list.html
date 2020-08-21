@@ -56,8 +56,10 @@
                                     <label class="subtitle is-5" for=""> QTY: </label>
                                     <input type="number" name="quantity" id="" value="{{product.quantity}}" min="1" max="10">
                                     <button type="submit" class="button is-success">Update</button>
-                                    <button type="submit" class="button is-danger">Remove</button>
                                 </form>
+                                <a href="{{url_for('removeListtItem', id=key )}}">
+                                    <button type="submit" class="button is-danger">Remove</button>
+                                </a>
                             </div>
                         </div>
                     </div>

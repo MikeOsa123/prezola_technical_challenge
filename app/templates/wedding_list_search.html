@@ -16,9 +16,10 @@
         </h2>
         </div>
     </div>
+    <form action="{{ url_for('find_list') }}" method="POST" name="search">
     <div class="columns is-centered py-4">
         <p class="control has-icons-right pt-3">
-        <input class="input is-focused is-large" type="text" placeholder="Search">
+        <input name="wedding_list_id" class="input is-focused is-large" type="text" placeholder="Search">
         <span class="icon is-right pt-5">
             <i class="fas fa-search" aria-hidden="true"></i>
         </span>
@@ -26,9 +27,10 @@
     </div>
     <div class="columns is-centered pb-4">
         <div class="buttons column is-half">
-            <span class="button is-success">SEARCH FOR LIST</span>
+            <button type="submit" class="button is-success">SEARCH FOR LIST</span>
         </div>
     </div>
+    </form>
   </div>
 </section>
 <section class="section">

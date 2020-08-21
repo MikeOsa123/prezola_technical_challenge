@@ -49,17 +49,19 @@
                                     {{ product.status }}
                                 </td>
                             </tr>
-                            {% endfor %}
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <a href="">Continue shopping</a>
-                                </td>
-                                <td colspan="4">
-                                    <h3>Grand Total: {{grandtotal}}</h3>
-                                </td>
-                                <td></td>
-                            </tr>
+                        </tbody>
+                    </table>
+                    {% endfor %}
+                    <table class="table table-sm">
+                        <thead>
+                            <th>Items</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                        </thead>
+                        <tbody>
                             {% for product in not_purchased %}
                             <tr>
                                 <td>

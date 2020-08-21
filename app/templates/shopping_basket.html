@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
 
 <body class="has-navbar-fixed-top">
-    {% include 'user_nav.html' %}
+    {% include 'guest_nav.html' %}
     <section class="hero is-medium is-dark is-bold has-text-centered">
         <div class="hero-body">
             <div class="container">
@@ -9,9 +9,9 @@
                     <table class="table table-sm">
                         <thead>
                             <th>Items</th>
+                            <th>Name</th>
                             <th>Unit Price</th>
                             <th>Quantity</th>
-                            <th>Subtotal</th>
                             <th>Update</th>
                             <th>Delete</th>
                         </thead>
@@ -22,25 +22,28 @@
                                     <img src="https://via.placeholder.com/150" alt="Image">
                                 </td>
                                 <td>{{ product.name }}</td>
-                                <form action="" method="POSt">
-                                    <td>£{{ product.price }}</td>
+                                <form action="" method="POST">
+                                    <td>£{{ product.price|replace("GBP","") }}</td>
                                     <td>
                                         <input type="number" name="quantity" min="1" max="10" value="{{ product.quantity }}">
-                                    </td> {{ set subtotal = product.quantity|int * product.price|float }}
-                                    <td>£{{ subtotal }}</td>
+                                    </td>
                                     <td>
-                                        <a href="#">Update</a>
+                                        <a href="{{url_for('updateBasket', id=key )}}">
+                                            <button type="submit" class="button is-success">Update</button>
+                                        </a>
                                     </td>
                                 </form>
                                 <td>
-                                    <a href="">Remove</a>
+                                    <a href="{{url_for('removeBasketItem', id=key )}}">
+                                        <button type="submit" class="button is-danger">Remove</button>
+                                    </a>
                                 </td>
                             </tr>
                             {% endfor %}
                             <tr>
                                 <td></td>
                                 <td>
-                                    <a href="">Continue shopping</a>
+                                    <a href="{{url_for('checkout')}}"><button class="button is-link">Checkout</button></a>
                                 </td>
                                 <td colspan="4">
                                     <h3>Grand Total: £{{grandtotal}}</h3>

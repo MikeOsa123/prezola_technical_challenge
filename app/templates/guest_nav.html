@@ -22,7 +22,9 @@
                         <a href="#" class="navbar-item">Contact Us</a>
                     </div>
                 </div>
-                <a href="#" class="navbar-item icon is-large"><i class="fas fa-shopping-basket fa-lg"></i></a>         
+                <a href="{{ url_for('getBasket') }}" class="navbar-item icon is-large">
+                    <i class="fas fa-shopping-basket fa-lg"></i>({{session['Shoppingbasket']|length}})
+                </a>         
             </div>
         </div>
     </nav>

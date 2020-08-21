@@ -2,6 +2,8 @@ from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+from sqlalchemy.orm import relationship
+
 from app import login
 
 @login.user_loader
@@ -32,13 +34,22 @@ class Wedding(db.Model):
 
 class List(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    listitem = relationship("Listitem")
+
+    def __repr__(self):
+        return '<List number: {}>'.format(self.id)
+
+class Listitem(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    list_id = db.Column(db.Integer, db.ForeignKey('list.id'))
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
     quantity = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     status = db.Column(db.String(32), nullable=False)
 
     def __repr__(self):
-        return '<List number: {}>'.format(self.id)
+        return '<Listitem id: {} for List - {}>'.format(self.id, self.list_id)
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)

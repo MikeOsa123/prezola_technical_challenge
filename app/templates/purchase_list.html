@@ -3,10 +3,6 @@
 {% block content  %}
 <body class="has-navbar-fixed-top">
 {% include 'guest_nav.html' %}
-<section class="hero is-medium">
-  <div class="hero-body" style = "background: url('https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat right; background-size: cover;">
-  </div>
-</section>
 <section class="hero is-light">
   <div class="hero-body level">
     <div class="level-left">
@@ -19,85 +15,56 @@
         </div>
         <div class="level-item">
             <h1 class="title">
-                {{ user.firstname }} x {{ user.partner }}
+                {{ user.firstname }} x {{ wedding.partner }}
             </h1>
         </div>
     </div>
     <div class="level-right">
         <div class="level-item">
             <h2 class="subtitle">
-                {{ user.wedding_date }}
+                {{ wedding.wedding_date }}
             </h2>
         </div>
     </div>
   </div>
 </section>
-<section class="section">
-    <div class="container">
-        <div id="app" class="row columns is-multiline">
-            <div class="column is-4">
-                <div class="card large">
-                    <div class="card-image is-16by9">
-                        <figure class="image">
-                            <img src="https://source.unsplash.com/h-ACUrBngrw/1280x720" alt="Image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="content has-text-centered">
-                            <h3 class="subtitle">
-                                Brand Title
-                            </h3>
-                            <h3 class="subtitle">
-                                Product Title
-                            </h3>
-                            <h3 class="subtitle">
-                                Price £
-                            </h3>
-                            <h4 class="subtitle">
-                                Quantity
-                            </h4>
+<!-- products -->
+    <section class="section">
+        <div class="container">
+            <div id="app" class="row columns is-multiline">
+                {% for product in products %}
+                <div class="column is-4">
+                    <div class="card">
+                        <div class="card-image is-32x32">
+                            <figure class="image">
+                                <img src="https://via.placeholder.com/150" alt="Image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content has-text-centered">
+                                <h5 class="subtitle is-5">
+                                    {{ product.name }}
+                                </h5>
+                                <p class="subtitle is-6">
+                                    {{ product.brand }}
+                                </p>
+                                <h5 class="subtitle has-text-weight-bold">
+                                    £{{ product.price|replace("GBP","") }}
+                                </h5>
+                                <form action="{{url_for('addBasket')}}" method="POST">
+                                    <input type="hidden" name="product_id" value="{{product.id}}">
+                                    <button type="submit" class="button is-link">Add to Bsket</button>
+                                    <label class="subtitle is-4" for=""> QTY: </label>
+                                    <input type="number" name="quantity" id="" value="1" min="1" max="{{product.quantity}}">
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="column is-4">
-                <div class="card large">
-                    <div class="card-image is-16by9">
-                        <figure class="image">
-                            <img src="https://source.unsplash.com/h-ACUrBngrw/1280x720" alt="Image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                            <a href="#">#css</a> <a href="#">#responsive</a>
-                            <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column is-4">
-                <div class="card large">
-                    <div class="card-image is-16by9">
-                        <figure class="image">
-                            <img src="https://source.unsplash.com/h-ACUrBngrw/1280x720" alt="Image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                            <a href="#">#css</a> <a href="#">#responsive</a>
-                            <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
-    </div>
-  </section>
+    </section>
+    <!-- products -->
 </body>
 {% endblock  %}

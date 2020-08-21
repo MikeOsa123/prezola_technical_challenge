@@ -12,3 +12,8 @@ login = LoginManager(app)
 login.login_view = 'login'
 
 from app import routes, models
+from user import routes
+from basket import routes
+from gift_list import routes
+from product import routes
+from guest import routes
