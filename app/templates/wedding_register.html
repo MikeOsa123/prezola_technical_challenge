@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content  %}
+<body class="has-navbar-fixed-top">
+{% include 'guest_nav.html' %}
+
+<!-- Header -->
+<section class="hero is-medium is-dark is-bold has-text-centered">
+  <div class="hero-body">
+    <div class="columns">
+        <div class="container column is-full">
+        <h2 class="title">
+            Hi {{ user_name }}!
+        </h2>
+        <img class="py-3" src="https://www.investinbath.co.uk/sites/default/files/pictures/Prezola.png" width="325px" />
+        <br>
+        </div>
+    </div>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.partner() }}
+        {{ form.wedding_date() }}
+        {{ form.submit() }}
+    </form>
+  </div>
+</section>
+<section class="section">
+    <div class="container has-text-centered">
+        <h2 class="subtitle">
+            UNRIVALLED CHOICE OF GIFTS, FULL FLEXIBILITY AND EXCEPTIONAL SERVICE
+        </h2>
+      <div class="columns has-text-centered">
+        <div class="column">
+            <a class="box social" href="#">
+                <p class="title is-4">Personal Services</p>
+            </a>
+        </div>
+        <div class="column">
+            <a class="box social" href="#">
+                <p class="title is-4">Free Storage and Delivery</p>
+            </a>
+        </div>
+        <div class="column">
+            <a class="box social" href="#">
+                <p class="title is-4">Unlimited Selection of Gifts</p>
+            </a>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Header -->
+    
+</body>
+{% endblock  %}

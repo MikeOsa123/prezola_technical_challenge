@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% block content %}
+
+<body class="has-navbar-fixed-top">
+    {% include 'user_nav.html' %}
+    <section class="hero is-medium is-dark is-bold has-text-centered">
+        <div class="hero-body">
+            <div class="container">
+                <div class="row">
+                    <table class="table table-sm">
+                        <thead>
+                            <th>Items</th>
+                            <th>Unit Price</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </thead>
+                        <tbody>
+                            {% for key, product in session['Shoppingbasket'].items() %}
+                            <tr>
+                                <td>
+                                    <img src="https://via.placeholder.com/150" alt="Image">
+                                </td>
+                                <td>{{ product.name }}</td>
+                                <form action="" method="POSt">
+                                    <td>£{{ product.price }}</td>
+                                    <td>
+                                        <input type="number" name="quantity" min="1" max="10" value="{{ product.quantity }}">
+                                    </td> {{ set subtotal = product.quantity|int * product.price|float }}
+                                    <td>£{{ subtotal }}</td>
+                                    <td>
+                                        <a href="#">Update</a>
+                                    </td>
+                                </form>
+                                <td>
+                                    <a href="">Remove</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <a href="">Continue shopping</a>
+                                </td>
+                                <td colspan="4">
+                                    <h3>Grand Total: £{{grandtotal}}</h3>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock %}

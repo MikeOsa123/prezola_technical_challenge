@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block content %}
+
+<body class="has-navbar-fixed-top">
+    {% include 'user_nav.html' %}
+    <section class="hero is-small is-light has-text-centered">
+        <div class="hero-body">
+            <div class="container level">
+                <div class="level-left">
+                    <h1 class="title">
+                        {{ current_user.firstname }} x {{ wedding.partner }}
+                    </h1>
+                </div>
+                <div class="level-right">
+                    <h2 class="title">
+                        {{ wedding.wedding_date }}
+                    </h2>
+                    <br>
+                </div>
+            </div>
+            <div class="columns is-centered pb-4">
+                <div class="buttons column is-half">
+                    <a href="{{url_for('products')}}">
+                        <span class="button is-link">Add More Gifts To List</span>
+                    </a>
+                    <a href="{{url_for('saveList')}}">
+                        <span class="button is-primary">Save Gift List Now</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div id="app" class="row columns is-multiline">
+                {% for key, product in session['Giftlist'].items() %}
+                <div class="column is-4">
+                    <div class="card">
+                        <div class="card-image is-32x32">
+                            <figure class="image">
+                                <img src="https://via.placeholder.com/150" alt="Image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content has-text-centered">
+                                <h5 class="subtitle is-5">
+                                    {{ product.name }}
+                                </h5>
+                                <p class="subtitle is-6">
+                                    {{ product.brand }}
+                                </p>
+                                <h5 class="subtitle has-text-weight-bold">
+                                    £{{ product.price|replace("GBP","") }}
+                                </h5>
+                                <form action="{{url_for('updateList', id=key )}}" method="POST">
+                                    <input type="hidden" name="product_id" value="{{product.id}}">
+                                    <label class="subtitle is-5" for=""> QTY: </label>
+                                    <input type="number" name="quantity" id="" value="{{product.quantity}}" min="1" max="10">
+                                    <button type="submit" class="button is-success">Update</button>
+                                    <button type="submit" class="button is-danger">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock %}

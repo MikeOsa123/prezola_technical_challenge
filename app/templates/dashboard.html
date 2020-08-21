@@ -3,7 +3,7 @@
 {% block content  %}
 <body class="has-navbar-fixed-top">
 {% include 'user_nav.html' %}
-<section class="hero is-medium is-dark is-bold has-text-centered">
+<section class="hero is-small is-dark is-bold has-text-centered">
     <div class="hero-body">
         <div class="columns">
             <div class="container column is-full">
@@ -12,64 +12,72 @@
                 </h1>
                 <br>
                 <h2 class="title">
-                {{ user.firstname }} x {{ user.partner }}
+                {{ current_user.firstname }} x {{ wedding.partner }}
                 </h2>
             </div>
         </div>
     </div>
 </section>
-<section class="hero is-medium is-light is-bold has-text-centered">
-    <div class="hero-body">
-        <div class="columns">
-            <div class="container column is-full">
+ <section class="blog-posts py-3">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-10 is-offset-1">
+          <div class="columns featured-post is-multiline">
+            <div class="column is-12 post">
+              <article class="columns featured">
+                <div class="column is-7 post-img ">
+                  <img src="https://www.investinbath.co.uk/sites/default/files/pictures/Prezola.png" alt="">
+                </div>
+                <div class="column is-5 featured-content va">
+                  <div>
+                    <h1 class="title post-title">Let's Get Started!</h1>
+                    <p class="post-excerpt">
+                        Browse our extensive list of gifts available and when you have found the right one just click "Add to List"
+                    </p>
+                    <br>
+                    <a href="{{ url_for('products') }}" class="button is-primary">Start Creating a List</a>
+                  </div>
+
+                </div>
+              </article>
             </div>
-         </div>
-    </div>
-</section>
-<section class="hero is-medium is-white is-bold has-text-centered">
-  <div class="hero-body">
-    <div class="columns">
-        <div class="container column is-full">
-        <h1 class="title">
-            {{ user.firstname }} x {{ user.partner }}
-        </h1>
-        <br>
-        <h2 class="title">
-           {{ user.wedding_date }}
-        </h2>
-        <br>
-        </div>
-    </div>
-    <div class="columns is-centered pb-4">
-        <div class="buttons column is-half">
-            <span class="button is-success">View Couple's List</span>
-        </div>
-    </div>
-  </div>
-</section>
-<section class="section">
-    <div class="container has-text-centered">
-        <h2 class="subtitle">
-            UNRIVALLED CHOICE OF GIFTS, FULL FLEXIBILITY AND EXCEPTIONAL SERVICE
-        </h2>
-      <div class="columns has-text-centered">
-        <div class="column">
-            <a class="box social" href="#">
-                <p class="title is-4">Personal Services</p>
-            </a>
-        </div>
-        <div class="column">
-            <a class="box social" href="#">
-                <p class="title is-4">Free Storage and Delivery</p>
-            </a>
-        </div>
-        <div class="column">
-            <a class="box social" href="#">
-                <p class="title is-4">Unlimited Selection of Gifts</p>
-            </a>
+          </div>
         </div>
       </div>
-    </div>
+
   </section>
+<section class="hero  is-medium  is-light">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-multiline is-centered">
+                    
+                        <div class="column is-6 has-text-centered">
+                            
+                            <div class="icon is-large">
+                            <a href="">
+                                <i class="fas fa-copy fa-4x"></i>
+                            </a>
+                            </div>
+                            <br>
+                            <p class="title is-3 py-5">GIFT LIST REPORT</p>
+                        
+                        </div>
+                    
+                        <div class="column is-6 has-text-centered">
+                            
+                            <div class="icon is-large">
+                            <a href="">
+                                <i class="far fa-list-alt fa-4x"></i>
+                            </a>
+                            </div>
+                            <br>
+                            <p class="title is-3 py-5">MANAGE GIFT LIST</p>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 {% endblock  %}

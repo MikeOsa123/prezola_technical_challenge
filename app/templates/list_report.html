@@ -1,0 +1,86 @@
+{% extends "base.html" %} {% block content %}
+
+<body class="has-navbar-fixed-top">
+    {% include 'user_nav.html' %}
+    <section class="hero is-small is-dark is-bold has-text-centered">
+        <div class="hero-body">
+            <div class="columns">
+                <div class="container column is-full">
+                    <h1 class="title">
+                        WELCOME
+                    </h1>
+                    <br>
+                    <h2 class="title">
+                        {{ current_user.firstname }} x {{ wedding.partner }}
+                    </h2>
+                    <h3 class="subtitle">
+                        Wedding List Report
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hero is-medium is-light is-bold has-text-centered">
+        <div class="hero-body">
+            <div class="container">
+                <div class="row">
+                    <table class="table table-sm">
+                        <thead>
+                            <th>Items</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                        </thead>
+                        <tbody>
+                            {% for product in purchased %}
+                            <tr>
+                                <td>
+                                    <img src="https://via.placeholder.com/150" alt="Image">
+                                </td>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.brand }}</td>
+                                <td>£{{ product.price }}</td>
+                                <td>
+                                    {{ product.quantity }}
+                                </td>
+                                <td>
+                                    {{ product.status }}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <a href="">Continue shopping</a>
+                                </td>
+                                <td colspan="4">
+                                    <h3>Grand Total: {{grandtotal}}</h3>
+                                </td>
+                                <td></td>
+                            </tr>
+                            {% for product in not_purchased %}
+                            <tr>
+                                <td>
+                                    <img src="https://via.placeholder.com/150" alt="Image">
+                                </td>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.brand }}</td>
+                                <td>£{{ product.price }}</td>
+                                <td>
+                                    {{ product.quantity }}
+                                </td>
+                                <td>
+                                    {{ product.status }}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock %}
