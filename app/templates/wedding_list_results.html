@@ -2,6 +2,8 @@
 
 <body class="has-navbar-fixed-top">
     {% include 'guest_nav.html' %}
+
+    <!-- HERO - SEARCH QUERY INFO -->
     <section class="hero is-medium is-dark is-bold has-text-centered">
         <div class="hero-body">
             <div class="columns">
@@ -26,6 +28,9 @@
             </div>
         </div>
     </section>
+    <!-- HERO - SEARCH QUERY INFO -->    
+
+    <!-- HERO - SEARCH QUERY RESULT -->    
     <section class="hero is-medium is-white is-bold has-text-centered">
         <div class="hero-body">
             <div class="columns">
@@ -49,29 +54,11 @@
             </div>
         </div>
     </section>
-    <section class="section">
-        <div class="container has-text-centered">
-            <h2 class="subtitle">
-                UNRIVALLED CHOICE OF GIFTS, FULL FLEXIBILITY AND EXCEPTIONAL SERVICE
-            </h2>
-            <div class="columns has-text-centered">
-                <div class="column">
-                    <a class="box social" href="#">
-                        <p class="title is-4">Personal Services</p>
-                    </a>
-                </div>
-                <div class="column">
-                    <a class="box social" href="#">
-                        <p class="title is-4">Free Storage and Delivery</p>
-                    </a>
-                </div>
-                <div class="column">
-                    <a class="box social" href="#">
-                        <p class="title is-4">Unlimited Selection of Gifts</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- HERO - SEARCH QUERY RESULT -->    
+
+    <!-- CONTENT - OTHER SERVICES -->       
+    {% include 'other_services.html' %}
+    <!-- CONTENT - OTHER SERVICES -->       
+           
 </body>
 {% endblock %}

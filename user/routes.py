@@ -71,7 +71,6 @@ def wedding_registry():
 @login_required
 def dashboard():
     wedding = Wedding.query.filter_by(user_id=current_user.id).first()
-    print(wedding)
     return render_template('dashboard.html', title='Dashboard', wedding=wedding)
 
 @app.route('/logout')

@@ -88,6 +88,26 @@ def empty_basket():
 
 @app.route('/checkout')
 def checkout():
-    session['Shoppingbasket'] = {}
-    flash("CHECKOUT COMPLETE")
+    '''
+    checkout items in basket and then update items status in the Listitem table
+    '''
+    # get wedding details of gift list
+    wedding = Wedding.query.filter_by(id=session["wedding_list_id"]).first()
+
+    if 'Shoppingbasket' not in session and len(session['Shoppingbasket']) <= 0:
+        return redirect(url_for('index'))
+    try:
+        for key, item in session['Shoppingbasket'].items():
+            product = Listitem.query.filter_by(product_id=key).filter_by(user_id=wedding.user_id).first()
+            product.status = "PURCHASED"
+            db.session.commit()
+            print("{} - status updated to 'PURCHASED' in database...".format(product.product_id))
+        session['Shoppingbasket'] = {}
+        flash("CHECKOUT COMPLETE")
+        return redirect(url_for('index'))
+            
+    except Exception as e:
+        print(e)
+        return redirect(url_for('index'))
+        
     return render_template('checkout.html')

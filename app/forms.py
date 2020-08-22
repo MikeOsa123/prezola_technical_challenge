@@ -25,7 +25,6 @@ class RegisterForm(FlaskForm):
             raise ValidationError("Please use a different email address.")
 
 
-
 class WeddingForm(FlaskForm):
     partner = StringField('First Name', validators=[InputRequired(), Length(min=2, max=20)])
     wedding_date = DateField('DatePicker')

@@ -2,63 +2,63 @@
 
 {% block content  %}
 <body class="has-navbar-fixed-top">
-{% include 'first_nav.html' %}
+    {% include 'first_nav.html' %}
 
-<!-- Header -->
-<section class="hero is-light is-fullheight-with-navbar">
-  <div class="hero-body has-text-centered">
-    <div class="container">
-        <div class="columns is-centered">
-            <div class="column is-one-third">
-                <img class="py-3" src="https://www.investinbath.co.uk/sites/default/files/pictures/Prezola.png" width="325px" />
-                <form action="" method="POST">
-                    {{ form.hidden_tag() }}
-                    <div class="field">
-                    <div class="control">
-                        {{ form.email(class='input is-medium is-rounded', placeholder="Email") }}
+    <!-- REGISTER -->
+    <section class="hero is-light is-fullheight-with-navbar">
+        <div class="hero-body has-text-centered">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-one-third">
+                        <img class="py-3" src="https://www.investinbath.co.uk/sites/default/files/pictures/Prezola.png" width="325px" />
+                        <form action="" method="POST">
+                            {{ form.hidden_tag() }}
+                            <div class="field">
+                            <div class="control">
+                                {{ form.email(class='input is-medium is-rounded', placeholder="Email") }}
+                            </div>
+                            </div>
+                            <div class="field">
+                            <div class="control">
+                                {{ form.password(class="input is-medium is-rounded", type="password", placeholder="Password") }}                        
+                            </div>
+                            </div>
+                            <div class="field">
+                            <div class="control">
+                                {{ form.password2(class="input is-medium is-rounded", type="password", placeholder="Repeat Password") }}                        
+                            </div>
+                            </div>
+                            <div class="field">
+                            <div class="control">
+                                {{ form.firstname(class="input is-medium is-rounded", type="text", placeholder="First Name") }}                        
+                            </div>
+                            </div>
+                            <div class="field">
+                            <div class="control">
+                                {{ form.surname(class="input is-medium is-rounded", type="text", placeholder="Surname") }}                        
+                            </div>
+                            </div>
+                            {{ form.submit(class="button is-primary") }}
+                        </form>
+                        <br>
+                        <nav class="level">
+                            <div class="level-item has-text-centered">
+                            <div>
+                                <a href="{{ url_for('find_list') }}">Just Making a Purchase?</a>
+                            </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+                            <div>
+                                <a href="{{ url_for('login') }}">Already Have a List?</a>
+                            </div>
+                            </div>
+                        </nav>
                     </div>
-                    </div>
-                    <div class="field">
-                    <div class="control">
-                        {{ form.password(class="input is-medium is-rounded", type="password", placeholder="Password") }}                        
-                    </div>
-                    </div>
-                    <div class="field">
-                    <div class="control">
-                        {{ form.password2(class="input is-medium is-rounded", type="password", placeholder="Repeat Password") }}                        
-                    </div>
-                    </div>
-                    <div class="field">
-                    <div class="control">
-                        {{ form.firstname(class="input is-medium is-rounded", type="text", placeholder="First Name") }}                        
-                    </div>
-                    </div>
-                    <div class="field">
-                    <div class="control">
-                        {{ form.surname(class="input is-medium is-rounded", type="text", placeholder="Surname") }}                        
-                    </div>
-                    </div>
-                    {{ form.submit(class="button is-primary") }}
-                </form>
-                <br>
-                <nav class="level">
-                    <div class="level-item has-text-centered">
-                    <div>
-                        <a href="{{ url_for('find_list') }}">Just Making a Purchase?</a>
-                    </div>
-                    </div>
-                    <div class="level-item has-text-centered">
-                    <div>
-                        <a href="{{ url_for('login') }}">Already Have a List?</a>
-                    </div>
-                    </div>
-                </nav>
+                </div>
             </div>
         </div>
-    </div>
-  </div>
-</section>
-<!-- Header -->
+    </section>
+    <!-- REGISTER -->
     
 </body>
 {% endblock  %}

@@ -38,28 +38,25 @@ def AddList():
 @app.route('/my-gift-list')
 @login_required
 def getGiftList():
+    wedding = Wedding.query.filter_by(user_id=current_user.id).first()
     if len(session["Giftlist"]) == 0:
         try:
             my_gift_list = db.session.query(Product.name, Product.id, Product.brand, Product.price, Listitem.quantity).join(Listitem, Listitem.product_id == Product.id).filter(Listitem.user_id==current_user.id).all()
             for product in my_gift_list:
-                print(product)
                 DictItems = {product.id: {'name': product.name, 'price': product.price, 'brand':product.brand, 'quantity': product.quantity}}
                 session["Giftlist"] = MergeDicts(session['Giftlist'], DictItems)
-            return redirect(url_for('getGiftList'))
+            return render_template('my_gift_list.html', title='My Gift List', wedding=wedding)
         except Exception as e:
             print(e)
-        finally:
-            flash('No Gifts in Database please add gifts to List')        
+            flash('No Gifts in Database please add gifts to List')
             return redirect(url_for('dashboard'))
-
-    wedding = Wedding.query.filter_by(user_id=current_user.id).first()
-    return render_template('my_gift_list.html', title='My Gift List', wedding=wedding)
+    else:
+        return render_template('my_gift_list.html', title='My Gift List', wedding=wedding)
 
 @app.route('/my-gift-list/save', methods=["GET"])
 @login_required
 def saveList():
     wedding_list = List.query.filter_by(user_id=current_user.id).first()
-    print(wedding_list)
     try:
         for key, item in session['Giftlist'].items():
             listitem= Listitem(list_id=wedding_list.id, product_id=key, quantity=item["quantity"], user_id=current_user.id, status="NOT PURCHASED")
@@ -76,19 +73,21 @@ def saveList():
 @app.route('/my-gift-list/report', methods=["GET"])
 @login_required
 def giftListReport():
+    '''
+    Return list of items in Product with status from Listitem joined on the product id
+    Report has 2 sections PURCHASED AND NOT PURCHASED
+    '''
     wedding = Wedding.query.filter_by(user_id=current_user.id).first()
-    # purchased = Listitem.query.join(Product, Product.id == Listitem.product_id).filter(Listitem.status=="PURCHASED").all()
-    # not_purchased = Listitem.query.join(Product, Product.id == Listitem.product_id).filter(Listitem.status=="NOT PURCHASED").all()
     purchased = db.session.query(Product.name, Product.brand, Product.price, Listitem.quantity, Listitem.status).join(Listitem, Listitem.product_id == Product.id).filter(Listitem.status=="PURCHASED").filter(Listitem.user_id==current_user.id).all()
     not_purchased = db.session.query(Product.name, Product.brand, Product.price, Listitem.quantity, Listitem.status).join(Listitem, Listitem.product_id == Product.id).filter(Listitem.status=="NOT PURCHASED").filter(Listitem.user_id==current_user.id).all()
-    for x in not_purchased:
-        print(x)
-    
     return render_template('list_report.html', title='Gift List Report', wedding=wedding, purchased=purchased, not_purchased=not_purchased)
 
 @app.route('/my-gift-list/<int:id>', methods=["POST"])
 @login_required
 def updateList(id):
+    '''
+    Updates the gift list of the user
+    '''
     if 'Giftlist' not in session and len(session["Giftlist"]) <= 0:
         return redirect(url_for('dashboard'))
     if request.method == "POST":
@@ -106,6 +105,9 @@ def updateList(id):
 
 @app.route('/my-gift-list/deleteitem/<int:id>', methods=["GET"])
 def removeListtItem(id):
+    '''
+    Removes item from Giftlist
+    '''
     if 'Giftlist' not in session and len(session['Giftlist']) <= 0:
         return redirect(url_for('index'))
     try:

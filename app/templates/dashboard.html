@@ -2,7 +2,11 @@
 
 {% block content  %}
 <body class="has-navbar-fixed-top">
+<!-- NAVBAR - SECTION -->
 {% include 'user_nav.html' %}
+<!-- NAVBAR - SECTION -->
+
+<!-- HERO - WELCOME USER -->
 <section class="hero is-small is-dark is-bold has-text-centered">
     <div class="hero-body">
         <div class="columns">
@@ -18,66 +22,66 @@
         </div>
     </div>
 </section>
- <section class="blog-posts py-3">
+<!-- HERO - WELCOME USER -->
+
+<!-- CONTENT - MORE INFO FOR USER -->
+<section class="blog-posts py-3">
     <div class="container">
-      <div class="columns">
-        <div class="column is-10 is-offset-1">
-          <div class="columns featured-post is-multiline">
-            <div class="column is-12 post">
-              <article class="columns featured">
-                <div class="column is-7 post-img ">
-                  <img src="https://www.investinbath.co.uk/sites/default/files/pictures/Prezola.png" alt="">
+        <div class="columns">
+            <div class="column is-10 is-offset-1">
+                <div class="columns featured-post is-multiline">
+                    <div class="column is-12 post">
+                        <article class="columns featured">
+                            <div class="column is-7 post-img ">
+                                <img src="https://www.investinbath.co.uk/sites/default/files/pictures/Prezola.png" alt="">
+                            </div>
+                            <div class="column is-5 featured-content va">
+                                <div>
+                                    <h1 class="title post-title">Let's Get Started!</h1>
+                                    <p class="post-excerpt">
+                                    Browse our extensive list of gifts available and when you have found the right one just click "Add to List"
+                                    </p>
+                                    <br>
+                                    <a href="{{ url_for('products') }}" class="button is-primary">Start Creating a List</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-                <div class="column is-5 featured-content va">
-                  <div>
-                    <h1 class="title post-title">Let's Get Started!</h1>
-                    <p class="post-excerpt">
-                        Browse our extensive list of gifts available and when you have found the right one just click "Add to List"
-                    </p>
-                    <br>
-                    <a href="{{ url_for('products') }}" class="button is-primary">Start Creating a List</a>
-                  </div>
-
-                </div>
-              </article>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+</section>
+<!-- CONTENT - MORE INFO FOR USER -->
 
-  </section>
+<!-- CONTENT - OPTIONS FOR USER ACCOUNT -->
 <section class="hero  is-medium  is-light">
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns is-multiline is-centered">
-                    
-                        <div class="column is-6 has-text-centered">
-                            
-                            <div class="icon is-large">
-                            <a href="{{ url_for('giftListReport') }}">
-                                <i class="fas fa-copy fa-4x"></i>
-                            </a>
-                            </div>
-                            <br>
-                            <p class="title is-3 py-5">GIFT LIST REPORT</p>
-                        
-                        </div>
-                    
-                        <div class="column is-6 has-text-centered">
-                            
-                            <div class="icon is-large">
-                            <a href="{{ url_for('getGiftList') }}">
-                                <i class="far fa-list-alt fa-4x"></i>
-                            </a>
-                            </div>
-                            <br>
-                            <p class="title is-3 py-5">MANAGE GIFT LIST</p>
-                            
-                        </div>
-                    
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-multiline is-centered">          
+                <div class="column is-6 has-text-centered"> 
+                    <div class="icon is-large">
+                        <a href="{{ url_for('giftListReport') }}">
+                            <i class="fas fa-copy fa-4x"></i>
+                        </a>
+                    </div>
+                    <br>
+                    <p class="title is-3 py-5">GIFT LIST REPORT</p>
+                </div>
+                <div class="column is-6 has-text-centered">
+                    <div class="icon is-large">
+                        <a href="{{ url_for('getGiftList') }}">
+                            <i class="far fa-list-alt fa-4x"></i>
+                        </a>
+                    </div>
+                    <br>
+                    <p class="title is-3 py-5">MANAGE GIFT LIST</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+<!-- CONTENT - OPTIONS FOR USER ACCOUNT -->
+
 </body>
 {% endblock  %}

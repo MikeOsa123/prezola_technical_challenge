@@ -1,7 +1,16 @@
 {% extends "base.html" %} {% block content %}
 
 <body class="has-navbar-fixed-top">
-    {% include 'guest_nav.html' %}
+
+    <!-- NAVBAR CONDITIONAL -->
+    {% if current_user.is_authenticated %}
+        {% include 'user_nav.html' %}
+    {% else %}
+        {% include 'guest_nav.html' %}
+    {% endif %}
+    <!-- NAVBAR CONDITIONAL -->
+
+    <!-- HERO - SHOPPING BASKET -->
     <section class="hero is-medium is-dark is-bold has-text-centered">
         <div class="hero-body">
             <div class="container">
@@ -56,5 +65,7 @@
             </div>
         </div>
     </section>
+    <!-- HERO - SHOPPING BASKET -->
+    
 </body>
 {% endblock %}

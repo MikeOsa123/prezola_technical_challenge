@@ -2,6 +2,7 @@
 
 <body class="has-navbar-fixed-top">
     {% include 'user_nav.html' %}
+    <!-- HERO - WELCOME USER - LIST REPORT -->
     <section class="hero is-small is-dark is-bold has-text-centered">
         <div class="hero-body">
             <div class="columns">
@@ -20,6 +21,9 @@
             </div>
         </div>
     </section>
+    <!-- HERO - WELCOME USER -->
+
+    <!-- CONTENT - LIST PRODUCTS AS REPORT -->        
     <section class="hero is-medium is-light is-bold has-text-centered">
         <div class="hero-body">
             <div class="container">
@@ -49,9 +53,9 @@
                                     {{ product.status }}
                                 </td>
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
-                    {% endfor %}
                     <table class="table table-sm">
                         <thead>
                             <th>Items</th>
@@ -84,5 +88,7 @@
             </div>
         </div>
     </section>
+    <!-- CONTENT - LIST PRODUCTS AS REPORT -->        
+    
 </body>
 {% endblock %}

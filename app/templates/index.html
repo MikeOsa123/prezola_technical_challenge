@@ -2,54 +2,34 @@
 
 {% block content  %}
 <body class="has-navbar-fixed-top">
-{% include 'first_nav.html' %}
+    {% include 'first_nav.html' %}
 
-<!-- Header -->
-<section class="hero is-large is-dark is-bold has-text-centered">
-  <div class="hero-body">
-    <div class="columns">
-        <div class="container column is-full">
-        <img class="py-3" src="https://www.investinbath.co.uk/sites/default/files/pictures/Prezola.png" width="325px" />
-        <br>
+    <!-- HERO - LOGO AND SITE OPTIONS -->
+    <section class="hero is-large is-dark is-bold has-text-centered">
+        <div class="hero-body">
+            <div class="columns">
+                <div class="container column is-full">
+                <img class="py-3" src="https://www.investinbath.co.uk/sites/default/files/pictures/Prezola.png" width="325px" />
+                <br>
+                </div>
+            </div>
+            <div class="columns is-centered pb-4">
+                <div class="buttons column is-half">
+                    <a href="{{ url_for('register') }}">
+                        <span class="button is-success">CREATE A LIST</span>
+                    </a>
+                    <a href="{{ url_for('find_list') }}">
+                        <span class="button is-danger">PURCHASE A GIFT</span>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="columns is-centered pb-4">
-        <div class="buttons column is-half">
-            <a href="{{ url_for('register') }}">
-                <span class="button is-success">CREATE A LIST</span>
-            </a>
-            <a href="{{ url_for('find_list') }}">
-                <span class="button is-danger">PURCHASE A GIFT</span>
-            </a>
-        </div>
-    </div>
-  </div>
-</section>
-<section class="section">
-    <div class="container has-text-centered">
-        <h2 class="subtitle">
-            UNRIVALLED CHOICE OF GIFTS, FULL FLEXIBILITY AND EXCEPTIONAL SERVICE
-        </h2>
-      <div class="columns has-text-centered">
-        <div class="column">
-            <a class="box social" href="#">
-                <p class="title is-4">Personal Services</p>
-            </a>
-        </div>
-        <div class="column">
-            <a class="box social" href="#">
-                <p class="title is-4">Free Storage and Delivery</p>
-            </a>
-        </div>
-        <div class="column">
-            <a class="box social" href="#">
-                <p class="title is-4">Unlimited Selection of Gifts</p>
-            </a>
-        </div>
-      </div>
-    </div>
-  </section>
-<!-- Header -->
+    </section>
+    <!-- HERO - LOGO AND SITE OPTIONS -->
+
+    <!-- Content - Other services -->
+    {% include 'other_services.html' %}
+    <!-- Content - Other services  -->
     
 </body>
 {% endblock  %}

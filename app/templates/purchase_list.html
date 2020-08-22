@@ -2,33 +2,44 @@
 
 {% block content  %}
 <body class="has-navbar-fixed-top">
-{% include 'guest_nav.html' %}
-<section class="hero is-light">
-  <div class="hero-body level">
-    <div class="level-left">
-        <div class="level-item">
-            <figure class="media-left">
-                <p class="image is-64x64">
-                <img class="is-rounded" src="https://pngimg.com/uploads/wedding/wedding_PNG19476.png">
-                </p>
-            </figure>
+
+    <!-- NAVBAR CONDITIONAL -->
+    {% if current_user.is_authenticated %}
+        {% include 'user_nav.html' %}
+    {% else %}
+        {% include 'guest_nav.html' %}
+    {% endif %}
+    <!-- NAVBAR CONDITIONAL -->
+
+    <!-- HERO - USER INFO -->
+    <section class="hero is-light">
+        <div class="hero-body level">
+            <div class="level-left">
+                <div class="level-item">
+                    <figure class="media-left">
+                        <p class="image is-64x64">
+                        <img class="is-rounded" src="https://pngimg.com/uploads/wedding/wedding_PNG19476.png">
+                        </p>
+                    </figure>
+                </div>
+                <div class="level-item">
+                    <h1 class="title">
+                        {{ user.firstname }} x {{ wedding.partner }}
+                    </h1>
+                </div>
+            </div>
+            <div class="level-right">
+                <div class="level-item">
+                    <h2 class="subtitle">
+                        {{ wedding.wedding_date }}
+                    </h2>
+                </div>
+            </div>
         </div>
-        <div class="level-item">
-            <h1 class="title">
-                {{ user.firstname }} x {{ wedding.partner }}
-            </h1>
-        </div>
-    </div>
-    <div class="level-right">
-        <div class="level-item">
-            <h2 class="subtitle">
-                {{ wedding.wedding_date }}
-            </h2>
-        </div>
-    </div>
-  </div>
-</section>
-<!-- products -->
+    </section>
+    <!-- HERO - USER INFO -->
+    
+    <!-- CONTENT - PRODUCT LIST FOR QUERIED WEDDING LIST -->
     <section class="section">
         <div class="container">
             <div id="app" class="row columns is-multiline">
@@ -65,6 +76,7 @@
             </div>
         </div>
     </section>
-    <!-- products -->
+    <!-- CONTENT - PRODUCT LIST FOR QUERIED WEDDING LIST -->
+    
 </body>
 {% endblock  %}
